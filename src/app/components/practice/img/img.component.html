@@ -1,0 +1,13 @@
+<!-- error: is a owm attribute of img when it can't loaded
+    load: when the src image was successfuly loaded-->
+<!--
+ (loaded)="imgLoaded()"
+
+ -->
+<img  width="150" [src]="inputSource"
+  (error)="imgError()"
+  (load)="imgLoaded()"
+  *ngIf="inputSource; else elseSrc">
+<ng-template #elseSrc>
+  <img  width="150" [src]="defaultImg">
+</ng-template>
