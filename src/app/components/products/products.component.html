@@ -1,5 +1,8 @@
 <p>Products in shopping cart: {{myShoppingCart.length}}</p>
-<p>Total: ${{total}}</p>
+<p>Total: {{total | currency:'COP'}}</p>
+<p>Today: {{today | date}}</p>
+<p>Oter date: {{date | timeAgo}}</p>
+<p>{{ 'Texto GeNErico' | reverse}}</p>
 <div class="products--grid">
   <app-product
     *ngFor="let product of products"

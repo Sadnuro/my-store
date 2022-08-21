@@ -12,6 +12,8 @@ export class ProductsComponent implements OnInit {
   total:number =0;
   myShoppingCart: Product[] = [];
   products: Product[] = [];
+  today = new Date();           // Current date
+  date = new Date(2021, 1, 21); // year | month | day
 
   constructor(
     private storeService:StoreService,
