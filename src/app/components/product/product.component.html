@@ -1,7 +1,11 @@
-<!-- <img width="150" [src]="product.image" alt=""> -->
-<app-img [inputSource]="product.image"></app-img>
-<h2>{{ product.price | currency:'COP' }}</h2>
-<h2>{{ product.title }}</h2>
-<p appHighlight>{{ product.description }}</p>
-<p>{{ product.category }}</p>
-<button (click)="onAddToCart()">Add cart</button>
+<div class="product-card">
+  <!-- <img width="150" [src]="product.image" alt=""> -->
+  <div class="app-img-container">
+    <app-img [inputSource]="product.image"></app-img>
+  </div>
+  <h2>{{ product.title }}</h2>
+  <p>{{ product.price | currency:'COP' }}</p>
+  <!-- <p appHighlight>{{ product.description }}</p> -->
+  <p>{{ product.category }}</p>
+  <button (click)="onAddToCart()">Add cart</button>
+</div>
