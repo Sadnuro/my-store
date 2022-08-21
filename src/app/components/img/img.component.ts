@@ -1,15 +1,24 @@
-import { Component, Input, Output, EventEmitter, OnInit,OnChanges, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit,OnChanges, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
   templateUrl: './img.component.html',
   styleUrls: ['./img.component.scss']
 })
-export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-  @Input() inputSource:string = '';
+export class ImgComponent implements OnInit, OnDestroy {
+
+  inputSource:string = '';
+  @Input('inputSource') // dafault name: changeSource
+  set changeSource(newSource:string){
+    this.inputSource = newSource;
+    console.log('chage only inputSource: ', this.inputSource)
+    // code...
+  };
+
+  @Input() inputAlt:string = '';
   @Output() loaded:EventEmitter<string> = new EventEmitter<string>();
 
-  defaultImg:string = '../../../assets/images/default.png';
+  defaultImg:string = '../../assets/images/default.png';
   counter:number = 0;
   counterFunction: number | undefined;  // Variable para guardar la ref del proceso setInterval
 
@@ -19,23 +28,20 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
     console.log('constructor', 'inputSource:', this.inputSource)
   }
 
-  ngOnChanges() {
-    // Before render
-    // Monitoring changes on inputs  - Much times
-    console.log('ngOnChanges', 'inputSource:', this.inputSource)
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   // Before render
+  //   // Monitoring changes on inputs  - Much times
+  //   console.log('ngOnChanges')
+  //   console.log('changes: ', changes)
+  // }
 
   ngOnInit(): void {
     console.log('ngOnInit', 'inputSource:', this.inputSource)
-    this.counterFunction = window.setInterval(()=> {
-      this.counter++
-      console.log('Run counter')
-    }, 1000)
   }
 
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit')
-  }
+  // ngAfterViewInit(): void {
+  //   console.log('ngAfterViewInit')
+  // }
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy')

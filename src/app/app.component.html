@@ -1,10 +1,9 @@
 <div>
   <!-- https://www.google.com.co/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png -->
-  <input type="text" [(ngModel)]="inputValue">
-  <button (click)="toggleImage()">Toggle Image: {{showImage}}</button>
+  <!-- <input type="text" [(ngModel)]="inputValue"> -->
+  <!-- <button (click)="toggleImage()">Toggle Image: {{showImage}}</button> -->
+  <!-- <app-img *ngIf="showImage" (loaded)="onLoaded($event)" [inputSource]="inputValue"></app-img> -->
+  <!-- <app-title></app-title> -->
 
-  <app-img *ngIf="showImage" (loaded)="onLoaded($event)" [inputSource]="inputValue"></app-img>
-
-  <app-title></app-title>
-  <app-product *ngFor="let product of products" [product]="product"></app-product>
+  <app-products></app-products>
 </div>

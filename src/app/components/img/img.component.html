@@ -5,12 +5,14 @@
 
  -->
 <div class="img-container">
-  <h3>Counter: {{counter}}</h3>
-  <img  width="150" [src]="inputSource"
+  <h3>Counter: {{ counter }}</h3>
+  <img
+    [src]="inputSource"
     (error)="imgError()"
     (load)="imgLoaded()"
-    *ngIf="inputSource; else elseSrc">
+    *ngIf="inputSource; else elseSrc"
+  />
   <ng-template #elseSrc>
-    <img  width="150" [src]="defaultImg">
+    <img width="150" [src]="defaultImg" />
   </ng-template>
 </div>
