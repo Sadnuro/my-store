@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   activeMenu:boolean = false;
+  counter: number = 0;
 
   constructor() { }
 
