@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { StoreService } from 'src/app/services/store.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -7,46 +9,28 @@ import { Product } from 'src/app/models/product.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  total:number = 0;
+  total:number =0;
   myShoppingCart: Product[] = [];
-  products: Product[] = [
-    {
-      id: '1',
-      name: 'Kick',
-      price: 1000,
-      image: '../../../assets/images/kick.png'
-    },
-    {
-      id: '2',
-      name: 'Bicicleta casi nueva',
-      price: 356,
-      image: '../../../assets/images/bici.png'
-    },
-    {
-      id: '3',
-      name: 'Colleción de albumnes',
-      price: 34,
-      image: '../../../assets/images/angular.png'
-    },
-    {
-      id: '4',
-      name: 'Mis libros',
-      price: 23,
-      image: '../../../assets/images/gneric-bici.png'
-    },
-  ]
+  products: Product[] = [];
 
-
-  constructor() { }
+  constructor(
+    private storeService:StoreService,
+    private productService: ProductService
+  ) {
+    this.myShoppingCart = this.storeService.getShoppingCart();
+  }
 
   ngOnInit(): void {
+    this.productService.getAllProducts()
+      .subscribe(data => {
+        this.products = data;
+      });
   }
 
   onAddToShoppingCart(product: Product){
     console.log('added product:', product);
-    this.myShoppingCart.push(product);
-    // (acumulador, elemento del array) => acumulador + atributo a sumar, valor inicial de acumulador
-    this.total = this.myShoppingCart.reduce( (sum, item) => sum + item.price, 0 );
+    this.storeService.addProduct(product);
+    this.total = this.storeService.getTotal();
   }
 
 }
