@@ -1,7 +1,8 @@
 <div class="show-mobile">
+  <!-- navigation bar -->
   <div>
     <!-- Menu button -->
-    <button>
+    <button (click)="toggleMenu()">
       <img src="../../../assets/svg/icon_menu.svg" alt="menu">
     </button>
     <!-- Logo site -->
@@ -12,6 +13,17 @@
     <a href="">
       <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
     </a>
+  </div>
+
+  <!-- side menu -->
+  <div class="side-menu" [class.active]="activeMenu" > <!-- add active class if activeMenu==true-->
+    <button (click)="toggleMenu()">Close</button>
+    <!-- Menu items options -->
+    <ul>
+      <li><a href="">All</a></li>
+      <li><a href="">Clothes</a></li>
+      <li><a href="">Electronics</a></li>
+    </ul>
   </div>
 </div>
 
