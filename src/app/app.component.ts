@@ -8,7 +8,8 @@ import { Product } from './models/product.model';
 })
 export class AppComponent {
   // title = 'my-store';
-  // inputValue:string = '';
+  inputValue:string = '';
+  showImage:boolean = true;
 
   products: Product[] = [
     {
@@ -40,4 +41,9 @@ export class AppComponent {
   onLoaded(value: string){
     console.log('Parent log:', value);
   }
+
+  toggleImage(){
+    this.showImage = !this.showImage;
+  }
+
 }
