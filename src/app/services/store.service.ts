@@ -16,7 +16,7 @@ export class StoreService {
 
   addProduct(product:Product){
     this.myShoppingCart.push(product);
-    this.myCart.next(this.myShoppingCart)
+    this.myCart.next(this.myShoppingCart);
   }
 
   getTotal(){

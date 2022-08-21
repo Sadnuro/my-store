@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter, OnInit,OnChanges, AfterViewInit
 export class ImgComponent implements OnInit, OnDestroy {
 
   inputSource:string = '';
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('inputSource') // dafault name: changeSource
   set changeSource(newSource:string){
     this.inputSource = newSource;
